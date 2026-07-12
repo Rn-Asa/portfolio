@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <section class="mx-auto grid min-h-[calc(100vh-73px)] max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1.2fr_0.8fr]">
+        <div>
+            <p class="mb-5 flex items-center gap-2 text-sm font-medium text-blue-300">
+                <i data-lucide="cpu" class="h-4 w-4"></i>
+                {{ profile.field }}
+            </p>
+            <h1 class="max-w-4xl text-5xl font-semibold leading-[0.95] text-white sm:text-7xl lg:text-8xl">
+                Low-level ideas shaped into clear, usable software.
+            </h1>
+            <p class="mt-7 max-w-2xl text-lg leading-8 text-white/68">
+                I build across {{ profile.stack }}, and protocol design, with a focus on fast systems,
+                portable tooling, and interfaces that make complex work feel calm.
+            </p>
+            <div class="mt-9 flex flex-wrap gap-3">
+                <a href="#work" class="rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-blue-100">View Work</a>
+                <a href="{{ profile.github_url }}" class="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/10">
+                    <img class="h-4 w-4" src="https://cdn.simpleicons.org/github/ffffff" alt="" aria-hidden="true">
+                    GitHub
+                </a>
+            </div>
+        </div>
+
+        <div class="glass rounded-[2rem] p-5 sm:p-6">
+            <div class="rounded-[1.5rem] border border-white/10 bg-black/30 p-6">
+                <div class="flex items-center justify-between">
+                    <span class="text-sm text-white/55">Current Focus</span>
+                    <span class="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-medium text-emerald-300">Available</span>
+                </div>
+                <h2 class="mt-10 text-3xl font-semibold">{{ profile.name }}</h2>
+                <p class="mt-3 text-sm leading-6 text-white/62">
+                    Building performance-minded tools around IPC, encoding, WASM, browser runtimes, and web systems.
+                </p>
+                <div class="mt-8 grid grid-cols-2 gap-3">
+                    <div class="rounded-2xl bg-white/8 p-4">
+                        <p class="text-3xl font-semibold">Rust</p>
+                        <p class="mt-1 text-xs text-white/55">Systems focus</p>
+                    </div>
+                    <div class="rounded-2xl bg-white/8 p-4">
+                        <p class="text-3xl font-semibold">WASM</p>
+                        <p class="mt-1 text-xs text-white/55">Portable runtimes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+        <div class="max-w-3xl">
+            <p class="text-sm font-medium text-blue-300">About</p>
+            <h2 class="mt-3 text-4xl font-semibold sm:text-6xl">Clear interfaces for serious engineering work.</h2>
+            <p class="mt-6 text-lg leading-8 text-white/65">
+                I am {{ profile.name }}, a developer exploring the space between low-level performance and product clarity.
+                My work leans into Rust libraries, portable encoders, WebAssembly boundaries, browser tooling, and web
+                interfaces that make technical systems easier to inspect and use.
+            </p>
+        </div>
+    </section>
+
+    <section id="work" class="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+        <div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+                <p class="text-sm font-medium text-blue-300">Selected Work</p>
+                <h2 class="mt-3 text-4xl font-semibold sm:text-6xl">Projects</h2>
+            </div>
+            <p id="projectStatus" class="text-sm text-white/55">Tap a project to focus it.</p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-3">
+            {% for project in featured_projects %}
+                <article class="project-card glass cursor-pointer rounded-[1.6rem] p-6" data-project="{{ project.name }}">
+                    <div class="flex items-center justify-between">
+                        <p class="text-sm text-white/50">{{ project.number }}</p>
+                        <i data-lucide="{{ project.icon }}" class="h-5 w-5 text-blue-300"></i>
+                    </div>
+                    <h3 class="mt-8 text-2xl font-semibold">{{ project.name }}</h3>
+                    <p class="mt-3 text-sm leading-6 text-white/62">{{ project.description }}</p>
+                    <a class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-blue-300" href="{{ project.url }}">
+                        {{ project.cta }}
+                        <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                    </a>
+                </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="skills" class="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+        <p class="text-sm font-medium text-blue-300">Skills</p>
+        <h2 class="mt-3 text-4xl font-semibold sm:text-6xl">What I work with</h2>
+        <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {% for skill in skills %}
+                <div class="rounded-3xl border border-white/10 bg-white/5 p-5 text-white/75">{{ skill }}</div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="contact" class="px-5 py-16 sm:px-8">
+        <div class="glass mx-auto max-w-6xl rounded-[2rem] p-6 sm:p-10">
+            <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+                <div>
+                    <p class="text-sm font-medium text-blue-300">Contact</p>
+                    <h2 class="mt-3 text-4xl font-semibold sm:text-6xl">Let's build something focused.</h2>
+                    <p id="contactNote" class="mt-6 text-white/62">Choose a contact method and I will highlight it for you.</p>
+                </div>
+                <div class="grid gap-3 content-center">
+                    <button class="contact-button rounded-3xl border border-white/10 bg-white/8 p-5 text-left transition hover:border-white/30 hover:bg-white/12" type="button" data-contact="GitHub: github.com/{{ profile.github_user }}">
+                        <span class="flex items-center gap-2 text-sm text-white/50"><img class="h-4 w-4" src="https://cdn.simpleicons.org/github/ffffff" alt="" aria-hidden="true"> GitHub</span>
+                        <span class="mt-1 block font-semibold">github.com/{{ profile.github_user }}</span>
+                    </button>
+                    <button class="contact-button rounded-3xl border border-white/10 bg-white/8 p-5 text-left transition hover:border-white/30 hover:bg-white/12" type="button" data-contact="Field: {{ profile.field }}">
+                        <span class="flex items-center gap-2 text-sm text-white/50"><i data-lucide="terminal" class="h-4 w-4"></i> Field</span>
+                        <span class="mt-1 block font-semibold">{{ profile.field }}</span>
+                    </button>
+                    <button class="contact-button rounded-3xl border border-white/10 bg-white/8 p-5 text-left transition hover:border-white/30 hover:bg-white/12" type="button" data-contact="Stack: {{ profile.stack }}">
+                        <span class="flex items-center gap-2 text-sm text-white/50"><i data-lucide="layers-3" class="h-4 w-4"></i> Stack</span>
+                        <span class="mt-1 block font-semibold">{{ profile.stack }}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const projectStatus = document.getElementById('projectStatus');
+    const contactNote = document.getElementById('contactNote');
+
+    document.querySelectorAll('.project-card').forEach((card) => {
+        card.addEventListener('click', () => {
+            document.querySelectorAll('.project-card').forEach((item) => item.classList.remove('is-active'));
+            card.classList.add('is-active');
+            projectStatus.textContent = `${card.dataset.project} selected.`;
+        });
+    });
+
+    document.querySelectorAll('.contact-button').forEach((button) => {
+        button.addEventListener('click', () => {
+            document.querySelectorAll('.contact-button').forEach((item) => {
+                item.classList.remove('border-blue-300/70', 'bg-blue-400/10');
+            });
+            button.classList.add('border-blue-300/70', 'bg-blue-400/10');
+            contactNote.textContent = button.dataset.contact;
+        });
+    });
+</script>
+{% endblock %}

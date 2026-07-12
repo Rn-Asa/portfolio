@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="mx-auto max-w-6xl px-5 py-14 sm:px-8">
+    <section class="grid gap-8 lg:grid-cols-[1fr_0.72fr] lg:items-end">
+        <div>
+            <p class="flex items-center gap-2 text-sm font-medium text-blue-300">
+                <img class="h-4 w-4" src="https://cdn.simpleicons.org/github/ffffff" alt="" aria-hidden="true">
+                Public GitHub Work
+            </p>
+            <h1 class="mt-4 max-w-4xl text-5xl font-semibold leading-[0.96] sm:text-7xl">
+                Skillset, mapped through shipped experiments.
+            </h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-white/65">
+                A project-led view of {{ profile.name }}: systems code, protocols, browser/runtime work,
+                graphics experiments, and web interfaces pulled from the public GitHub profile.
+            </p>
+        </div>
+        <div class="glass rounded-[2rem] p-6">
+            <div class="grid grid-cols-2 gap-3">
+                <div class="rounded-3xl bg-white/8 p-5">
+                    <p class="text-4xl font-semibold">{{ repository_count }}</p>
+                    <p class="mt-1 text-sm text-white/50">public repositories</p>
+                </div>
+                <div class="rounded-3xl bg-white/8 p-5">
+                    <p class="text-4xl font-semibold">8+</p>
+                    <p class="mt-1 text-sm text-white/50">technical lanes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-12">
+        <div class="flex flex-wrap gap-2" aria-label="Project filters">
+            <button class="filter-button rounded-full bg-white px-4 py-2 text-sm font-semibold text-black" type="button" data-filter="all">All</button>
+            <button class="filter-button rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10" type="button" data-filter="systems">Systems</button>
+            <button class="filter-button rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10" type="button" data-filter="web">Web</button>
+            <button class="filter-button rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10" type="button" data-filter="protocols">Protocols</button>
+            <button class="filter-button rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10" type="button" data-filter="graphics">Graphics</button>
+        </div>
+        <p id="filterStatus" class="mt-4 text-sm text-white/45">Showing all public project previews.</p>
+    </section>
+
+    <section class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {% for repo in repositories %}
+            <article class="repo-card glass rounded-[1.6rem] p-6" data-tags="{{ repo.tags }}">
+                <div class="flex items-center justify-between">
+                    <i data-lucide="{{ repo.icon }}" class="h-5 w-5 text-blue-300"></i>
+                    <span class="text-xs text-white/45">{{ repo.language }}</span>
+                </div>
+                <h2 class="mt-7 text-2xl font-semibold">{{ repo.name }}</h2>
+                <p class="mt-3 min-h-[72px] text-sm leading-6 text-white/62">{{ repo.description }}</p>
+                <a class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300" href="{{ repo.url }}">
+                    Open repo
+                    <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                </a>
+            </article>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const repoCards = document.querySelectorAll('.repo-card');
+    const filterStatus = document.getElementById('filterStatus');
+
+    filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const filter = button.dataset.filter;
+            filterButtons.forEach((item) => {
+                item.className = 'filter-button rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10';
+            });
+            button.className = 'filter-button rounded-full bg-white px-4 py-2 text-sm font-semibold text-black';
+
+            let visible = 0;
+            repoCards.forEach((card) => {
+                const shouldShow = filter === 'all' || card.dataset.tags.includes(filter);
+                card.classList.toggle('is-hidden', !shouldShow);
+                if (shouldShow) {
+                    visible += 1;
+                }
+            });
+
+            filterStatus.textContent = filter === 'all'
+                ? 'Showing all public project previews.'
+                : `Showing ${visible} ${filter} project previews.`;
+        });
+    });
+</script>
+{% endblock %}
