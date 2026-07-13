@@ -1,24 +1,18 @@
 # Positive Vibes Portfolio
 
-A dark, Apple-inspired Django portfolio for Positive Vibes. The site showcases systems, protocol, WebAssembly, TypeScript, Django, and web runtime work, with a dedicated skillset page that previews public GitHub projects from `radiiplus`.
+A dark, responsive Django portfolio for showcasing my work across systems programming, web tooling, protocols, WebAssembly, and product interfaces.
+
+The site includes a homepage and a skillset page that previews public GitHub projects from `radiiplus`.
 
 ## Features
 
-- Django-powered pages and routing
-- Tailwind CSS through CDN
-- Lucide icons through CDN
-- External white GitHub SVG from Simple Icons
-- Responsive dark interface
-- Icon-only desktop navigation
-- Mobile navigation menu
-- Interactive project selection
-- Interactive skillset filters
-- Public GitHub project showcase page
-
-## Pages
-
-- `/` - Main portfolio page with hero, about, selected work, skills, and contact sections.
-- `/skills/` - Skillset page with public project previews and filters for systems, web, protocols, and graphics work.
+- Django project with a dedicated `entry` app
+- Homepage and skillset page routed through app-level URLs
+- Shared base template with reusable navigation and layout
+- Models for portfolio skills and projects
+- Admin configuration for managing portfolio content
+- Focused tests for routes, templates, context data, and model strings
+- Responsive UI using Tailwind CDN and Lucide icons
 
 ## Project Structure
 
@@ -26,8 +20,14 @@ A dark, Apple-inspired Django portfolio for Positive Vibes. The site showcases s
 port/
   manage.py
   entry/
+    admin.py
+    apps.py
+    data.py
+    models.py
+    tests.py
     urls.py
     views.py
+    migrations/
     templates/
       base.html
       index.html
@@ -35,30 +35,16 @@ port/
   port/
     settings.py
     urls.py
+    asgi.py
+    wsgi.py
 ```
 
-## Key Files
-
-- `entry/views.py` stores the shared portfolio data:
-  - `PROFILE`
-  - `NAV_ITEMS`
-  - `SKILLS`
-  - `FEATURED_PROJECTS`
-  - `REPOSITORIES`
-
-- `entry/templates/base.html` contains shared layout, navigation, Tailwind setup, Lucide setup, background styling, and footer.
-
-- `entry/templates/index.html` renders the homepage.
-
-- `entry/templates/skills.html` renders the GitHub project showcase.
-
 ## Run Locally
-
-From the repository root:
 
 ```powershell
 .\env\Scripts\Activate.ps1
 cd port
+python manage.py migrate
 python manage.py runserver
 ```
 
@@ -68,12 +54,26 @@ Open:
 http://127.0.0.1:8000/
 ```
 
-Skillset page:
+## Pages
 
-```text
-http://127.0.0.1:8000/skills/
+- `/` - Portfolio homepage
+- `/skills/` - GitHub project and skillset showcase
+- `/admin/` - Django admin panel
+
+## Tests
+
+```powershell
+cd port
+python manage.py test
 ```
+
+## Stack
+
+- Django
+- Tailwind CDN
+- Lucide icons
+- Simple Icons GitHub SVG
 
 ## Notes
 
-The project currently uses CDN assets, so an internet connection is needed for Tailwind, Lucide icons, and the GitHub SVG icon to load in the browser.
+The public pages currently use static portfolio data from `entry/data.py` so the existing UI remains stable. The `Skill` and `PortfolioProject` models are registered in the admin panel and ready for future database-backed content.
