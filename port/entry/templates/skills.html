@@ -1,58 +1,65 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<main class="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-    <section class="grid gap-8 lg:grid-cols-[1fr_0.72fr] lg:items-end">
+<main class="mx-auto max-w-6xl px-6 py-16 sm:px-8">
+    <!-- Header -->
+    <section class="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
         <div>
-            <p class="flex items-center gap-2 text-sm font-medium text-blue-300">
-                <img class="h-4 w-4" src="https://cdn.simpleicons.org/github/ffffff" alt="" aria-hidden="true">
+            <div class="inline-flex items-center gap-2 rounded-full border border-purple-400/20 bg-purple-500/10 px-4 py-1.5 text-sm font-medium text-purple-300 mb-6">
+                <img class="h-4 w-4 opacity-70" src="https://cdn.simpleicons.org/github/ffffff" alt="" aria-hidden="true">
                 Public GitHub Work
-            </p>
-            <h1 class="mt-4 max-w-4xl text-5xl font-semibold leading-[0.96] sm:text-7xl">
-                Skillset, mapped through shipped experiments.
+            </div>
+            <h1 class="max-w-3xl text-4xl font-light leading-[1.15] tracking-tight text-white sm:text-6xl">
+                Skillset, mapped through <span class="text-gradient font-medium">shipped</span> experiments.
             </h1>
-            <p class="mt-6 max-w-2xl text-lg leading-8 text-white/65">
-                A project-led view of {{ profile.name }}: systems code, protocols, browser/runtime work,
-                graphics experiments, and web interfaces pulled from the public GitHub profile.
+            <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/60">
+                A project-led view of my work: Python backends, modern TypeScript interfaces, telehealth solutions, and responsive web applications pulled directly from my public GitHub profile.
             </p>
         </div>
-        <div class="glass rounded-[2rem] p-6">
-            <div class="grid grid-cols-2 gap-3">
-                <div class="rounded-3xl bg-white/8 p-5">
-                    <p class="text-4xl font-semibold">{{ repository_count }}</p>
-                    <p class="mt-1 text-sm text-white/50">public repositories</p>
+        
+        <div class="glass rounded-[2.5rem] p-8">
+            <div class="grid grid-cols-2 gap-6">
+                <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-5 text-center">
+                    <p class="text-4xl font-light text-purple-300">{{ repository_count }}</p>
+                    <p class="mt-2 text-xs font-medium uppercase tracking-widest text-white/40">Public Repos</p>
                 </div>
-                <div class="rounded-3xl bg-white/8 p-5">
-                    <p class="text-4xl font-semibold">8+</p>
-                    <p class="mt-1 text-sm text-white/50">technical lanes</p>
+                <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-5 text-center">
+                    <p class="text-4xl font-light text-fuchsia-300">4+</p>
+                    <p class="mt-2 text-xs font-medium uppercase tracking-widest text-white/40">Tech Lanes</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="mt-12">
-        <div class="flex flex-wrap gap-2" aria-label="Project filters">
-            <button class="filter-button rounded-full bg-white px-4 py-2 text-sm font-semibold text-black" type="button" data-filter="all">All</button>
-            <button class="filter-button rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10" type="button" data-filter="systems">Systems</button>
-            <button class="filter-button rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10" type="button" data-filter="web">Web</button>
-            <button class="filter-button rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10" type="button" data-filter="protocols">Protocols</button>
-            <button class="filter-button rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10" type="button" data-filter="graphics">Graphics</button>
+    <!-- Filters -->
+    <section class="mt-16">
+        <div class="flex flex-wrap gap-3" aria-label="Project filters">
+            <button class="filter-button rounded-full bg-purple-500 px-5 py-2.5 text-sm font-medium text-white shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all" type="button" data-filter="all">All Projects</button>
+            <button class="filter-button rounded-full border border-white/10 bg-white/[0.02] px-5 py-2.5 text-sm font-medium text-white/60 transition-all hover:border-purple-400/30 hover:bg-purple-500/10 hover:text-white" type="button" data-filter="python">Python</button>
+            <button class="filter-button rounded-full border border-white/10 bg-white/[0.02] px-5 py-2.5 text-sm font-medium text-white/60 transition-all hover:border-purple-400/30 hover:bg-purple-500/10 hover:text-white" type="button" data-filter="typescript">TypeScript</button>
+            <button class="filter-button rounded-full border border-white/10 bg-white/[0.02] px-5 py-2.5 text-sm font-medium text-white/60 transition-all hover:border-purple-400/30 hover:bg-purple-500/10 hover:text-white" type="button" data-filter="web">Web</button>
+            <button class="filter-button rounded-full border border-white/10 bg-white/[0.02] px-5 py-2.5 text-sm font-medium text-white/60 transition-all hover:border-purple-400/30 hover:bg-purple-500/10 hover:text-white" type="button" data-filter="healthcare">Healthcare</button>
         </div>
-        <p id="filterStatus" class="mt-4 text-sm text-white/45">Showing all public project previews.</p>
+        <p id="filterStatus" class="mt-6 text-sm text-white/40 italic">Showing all public project previews.</p>
     </section>
 
-    <section class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <!-- Repository Grid -->
+    <section class="mt-10 grid gap-6 md:grid-cols-2">
         {% for repo in repositories %}
-            <article class="repo-card glass rounded-[1.6rem] p-6" data-tags="{{ repo.tags }}">
-                <div class="flex items-center justify-between">
-                    <i data-lucide="{{ repo.icon }}" class="h-5 w-5 text-blue-300"></i>
-                    <span class="text-xs text-white/45">{{ repo.language }}</span>
+            <article class="repo-card glass-card group rounded-[2rem] p-8" data-tags="{{ repo.tags }}">
+                <div class="flex items-start justify-between">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/10 border border-purple-400/20">
+                        <i data-lucide="{{ repo.icon }}" class="h-6 w-6 text-purple-300"></i>
+                    </div>
+                    <span class="rounded-full border border-white/5 bg-white/[0.02] px-3 py-1 text-xs font-medium text-white/50">{{ repo.language }}</span>
                 </div>
-                <h2 class="mt-7 text-2xl font-semibold">{{ repo.name }}</h2>
-                <p class="mt-3 min-h-[72px] text-sm leading-6 text-white/62">{{ repo.description }}</p>
-                <a class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300" href="{{ repo.url }}">
-                    Open repo
-                    <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                
+                <h2 class="mt-6 text-xl font-medium text-white group-hover:text-purple-200 transition-colors">{{ repo.name }}</h2>
+                <p class="mt-3 min-h-[60px] text-sm leading-relaxed text-white/60">{{ repo.description }}</p>
+                
+                <a class="mt-6 inline-flex items-center gap-2 text-sm font-medium text-purple-300 transition-all group-hover:gap-3" href="{{ repo.url }}">
+                    View Repository
+                    <i data-lucide="arrow-right" class="h-4 w-4"></i>
                 </a>
             </article>
         {% endfor %}
@@ -69,10 +76,14 @@
     filterButtons.forEach((button) => {
         button.addEventListener('click', () => {
             const filter = button.dataset.filter;
+            
+            // Reset all buttons
             filterButtons.forEach((item) => {
-                item.className = 'filter-button rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10';
+                item.className = 'filter-button rounded-full border border-white/10 bg-white/[0.02] px-5 py-2.5 text-sm font-medium text-white/60 transition-all hover:border-purple-400/30 hover:bg-purple-500/10 hover:text-white';
             });
-            button.className = 'filter-button rounded-full bg-white px-4 py-2 text-sm font-semibold text-black';
+            
+            // Activate clicked button
+            button.className = 'filter-button rounded-full bg-purple-500 px-5 py-2.5 text-sm font-medium text-white shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all';
 
             let visible = 0;
             repoCards.forEach((card) => {
@@ -85,7 +96,7 @@
 
             filterStatus.textContent = filter === 'all'
                 ? 'Showing all public project previews.'
-                : `Showing ${visible} ${filter} project previews.`;
+                : `Showing ${visible} ${filter} project preview${visible !== 1 ? 's' : ''}.`;
         });
     });
 </script>
