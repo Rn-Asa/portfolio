@@ -1,78 +1,57 @@
-# Asa Dihnma Portfolio
+# Elibe Chidinma Esther Portfolio
 
-A refined, responsive Django portfolio showcasing full-stack engineering work across Python, Django, TypeScript, React, and telehealth solutions. The site features an elegant, modern aesthetic with soft purple/lavender accents, glassmorphism, and thoughtful UI/UX design.
+A Vite, React, and TypeScript port of the original Django portfolio.
 
-The site includes a homepage and a skillset page that previews public GitHub projects from [Dihnma](https://github.com/Dihnma).
+## Development
 
-## Features
+```bash
+npm install
+npm run dev
+```
 
-- Django project with a dedicated `entry` app
-- Homepage and skillset page routed through clean, app-level URLs
-- Shared base template with reusable navigation, custom purple/lavender Tailwind theming, and elegant glassmorphism effects
-- Static data configuration for seamless portfolio updates, with Django models registered in the admin panel for future database-backed content
-- Focused tests for routes, templates, context data, and model strings
-- Responsive, accessible UI built with Tailwind CSS (CDN) and Lucide icons
+## Checks
 
-## Project Structure
+```bash
+npm run lint
+npm run build
+```
+
+## Updating Portfolio Content
+
+All editable portfolio content lives in one file:
 
 ```text
-port/
-  manage.py
-  entry/
-    admin.py
-    apps.py
-    data.py          # Static portfolio content (profile, projects, skills)
-    models.py
-    tests.py
-    urls.py
-    views.py
-    migrations/
-    templates/
-      base.html      # Base layout with purple gradient orbs and glassmorphism
-      index.html     # Elegant, editorial-style homepage
-      skills.html    # Filterable GitHub project and skillset showcase
-  port/
-    settings.py
-    urls.py
-    asgi.py
-    wsgi.py
+src/content/portfolio.json
 ```
 
-## Run Locally
+This includes profile details, page copy, social and contact links, skills, tools, projects, certificates, GitHub settings, and fallback repositories. The React components only render this data.
 
-```powershell
-.\env\Scripts\Activate.ps1
-cd port
-python manage.py migrate
-python manage.py runserver
+To add a project, append an object to the `projects` array:
+
+```json
+{
+  "slug": "unique-project-url",
+  "title": "Project title",
+  "description": "A clear project description.",
+  "tech": ["Python", "Django"],
+  "githubUrl": "https://github.com/username/repository",
+  "liveUrl": "https://project.example.com",
+  "image": "/projects/project-image.jpg",
+  "featured": true
+}
 ```
 
-Open your browser and navigate to:
+- `slug` must be unique and becomes `/projects/slug/`.
+- `featured` controls whether the project appears on the home page.
+- `image`, `liveUrl`, and `githubUrl` can be empty strings when unavailable.
+- Add local images under `public/`, then reference them with a root path such as `/projects/project-image.jpg`.
 
-```text
-http://127.0.0.1:8000/
-```
+Certificates use the same pattern in the `certificates` array. Add the image under `public/certificates/`, then add its title, type, issuer, and image path to the JSON.
 
-## Pages
+Run `npm run build` before committing. The build validates project slugs, duplicate projects, local image paths, and the typed JSON structure. Once the commit reaches the connected repository, Vercel automatically rebuilds and publishes the updated content.
 
-- `/` - Portfolio homepage with an editorial layout, featured projects, and contact section
-- `/skills/` - Interactive, filterable showcase of public GitHub repositories and technical expertise
-- `/admin/` - Django admin panel (ready for future dynamic content management)
+`vercel.json` provides the single-page application fallback required for direct visits to About, Contact, and project-detail URLs. In Vercel, use the Vite framework preset with `npm run build` and `dist` as the output directory; these are normally detected automatically.
 
-## Tests
+The app fetches recent public repositories from GitHub in the browser and falls back to `github.fallbackRepos` from the JSON if the request is unavailable. The site does not require Django or PostgreSQL at runtime.
 
-```powershell
-cd port
-python manage.py test
-```
-
-## Stack
-
-- **Backend**: Django, Python
-- **Frontend**: HTML5, Tailwind CSS (CDN), Vanilla JavaScript
-- **Icons**: Lucide Icons, Simple Icons (GitHub SVG)
-- **Design**: Custom glassmorphism, CSS animations, and a refined purple/indigo color palette
-
-## Notes
-
-The public pages currently use static portfolio data from `entry/data.py` to ensure a stable, highly polished UI that accurately reflects the `Dihnma` GitHub profile. The `Skill` and `PortfolioProject` models are already registered in the Django admin panel, making it straightforward to transition to database-backed content in the future if needed.
+The legacy Django source remains in `home/` and `portfolio/` as a reference for the migration.

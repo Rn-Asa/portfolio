@@ -1,0 +1,237 @@
+{
+  "site": {
+    "name": "Elibe Chidinma Esther",
+    "firstName": "Elibe",
+    "initials": "EC",
+    "role": "Nurse & Web Developer",
+    "location": "Aba, Nigeria",
+    "locationShort": "Aba, NG",
+    "profileImage": "/elibe-profile.png",
+    "availability": "Available for selected opportunities",
+    "workingArea": "Working worldwide",
+    "footerBlurb": "Building dependable digital products with clinical insight and technical care.",
+    "seo": {
+      "defaultTitle": "Elibe Chidinma Esther | Portfolio",
+      "description": "Portfolio of Elibe Chidinma Esther, a registered nurse and backend developer building reliable, human-centered digital products.",
+      "socialTitle": "Elibe Chidinma Esther | Nurse & Web Developer",
+      "socialDescription": "Registered nurse and backend developer providing thoughtful technical and digital services.",
+      "socialImage": "https://github.com/Rn-Asa.png"
+    }
+  },
+  "navigation": [
+    { "label": "Home", "href": "/" },
+    { "label": "About", "href": "/about/" },
+    { "label": "Projects", "href": "/projects/" },
+    { "label": "Contact", "href": "/contact/", "emphasis": true }
+  ],
+  "socialLinks": [
+    { "label": "Email", "href": "mailto:Chidinmasophia46@gmail.com" },
+    { "label": "GitHub", "href": "https://github.com/Rn-Asa" },
+    { "label": "X", "href": "https://x.com/Dih_nmah" },
+    { "label": "Instagram", "href": "https://www.instagram.com/r.n_asa" }
+  ],
+  "home": {
+    "pageTitle": "Elibe Chidinma Esther | Digital care, built beautifully",
+    "heroTitle": [
+      { "text": "Human care," },
+      { "text": "reimagined", "accent": true },
+      { "text": "in code." }
+    ],
+    "heroLead": "I'm Elibe, a registered nurse and backend developer bringing thoughtful support, clear communication, and digital expertise to people and the systems that serve them.",
+    "primaryAction": "Explore my work",
+    "secondaryAction": "Let's talk",
+    "topNote": ["Care", "meets code"],
+    "signals": [
+      "Backend development / Virtual assistance",
+      "Health & digital services",
+      "Selected work"
+    ],
+    "intro": {
+      "label": ["A little about", "the way I work"],
+      "title": [
+        { "text": "Thoughtful by nature." },
+        { "text": "Precise by practice.", "accent": true }
+      ],
+      "body": "Clinical practice taught me to notice the details that matter. Development gives me the tools to turn those observations into products that feel simple, inclusive, and dependable.",
+      "action": "Meet me properly"
+    },
+    "work": {
+      "kicker": "Selected work",
+      "title": [
+        { "text": "Things I've" },
+        { "text": "made useful.", "accent": true }
+      ],
+      "action": "View all projects",
+      "featuredLimit": 3
+    },
+    "repositories": {
+      "kicker": "Open source / GitHub",
+      "title": [
+        { "text": "Currently" },
+        { "text": "in orbit.", "accent": true }
+      ],
+      "action": "Visit GitHub"
+    },
+    "cta": {
+      "kicker": "Have a good idea?",
+      "title": [
+        { "text": "Let's make it" },
+        { "text": "feel inevitable.", "accent": true }
+      ],
+      "action": "Start a conversation"
+    }
+  },
+  "about": {
+    "pageTitle": "About | Elibe Chidinma Esther",
+    "hero": {
+      "eyebrow": "About me",
+      "title": "Care informs how I work.",
+      "intro": "I bring the discipline of clinical practice to backend development, virtual assistance, customer support, and digital services."
+    },
+    "facts": [
+      { "label": "Role", "value": "Registered Nurse & Backend Developer" },
+      { "label": "Location", "value": "Aba, Nigeria" },
+      { "label": "Core strengths", "value": "Development, virtual assistance, and digital services" }
+    ],
+    "story": {
+      "lead": "I am a registered nurse and backend developer with a deep interest in thoughtful technology and dependable digital support.",
+      "paragraphs": [
+        "Clinical work has taught me to think critically, communicate clearly, and stay precise under pressure. Those same standards guide how I build software, support customers, organize work, and collaborate with others.",
+        "My experience includes backend development, medical virtual assistance, customer service, search engine optimization, and digital marketing. I am especially interested in work that combines healthcare insight with useful, well-managed digital services."
+      ],
+      "quote": "Whether I am working in care, code, or client support, the goal is the same: solve real problems thoughtfully and reliably."
+    },
+    "capabilities": {
+      "kicker": "Capabilities",
+      "title": "Skills & tools",
+      "note": "A versatile mix of technical, administrative, customer-facing, and digital marketing capabilities.",
+      "groups": [
+        {
+          "label": "Professional skills",
+          "items": ["Backend Development", "Medical Virtual Assistance", "Customer Service", "Search Engine Optimization", "Digital Marketing"]
+        },
+        {
+          "label": "Tools",
+          "items": ["Google Sheets", "Google Docs", "Trello", "HubSpot"]
+        }
+      ]
+    },
+    "credentials": {
+      "kicker": "Credentials",
+      "title": "Certificates",
+      "note": "Training in practical software development and professional workplace readiness."
+    },
+    "cta": {
+      "kicker": "Work together",
+      "title": "Looking for a thoughtful professional?",
+      "action": "Start a conversation"
+    }
+  },
+  "projectsPage": {
+    "pageTitle": "Projects | Elibe Chidinma Esther",
+    "hero": {
+      "eyebrow": "Selected work",
+      "title": "Projects built for real use.",
+      "intro": "A collection of full-stack applications, experiments, and open-source work focused on clear interfaces and dependable systems."
+    },
+    "portfolioKicker": "Portfolio",
+    "portfolioTitle": "Case studies",
+    "portfolioNote": "Designed and developed from problem definition through implementation.",
+    "repositoryKicker": "Open source",
+    "repositoryTitle": "GitHub repositories",
+    "repositoryAction": "View GitHub profile",
+    "caseStudyLabel": "Case study",
+    "viewCaseStudyLabel": "View case study",
+    "allProjectsLabel": "All projects",
+    "overviewLabel": "Overview",
+    "sourceLabel": "View source",
+    "liveLabel": "Open live project"
+  },
+  "contact": {
+    "pageTitle": "Contact | Elibe Chidinma Esther",
+    "hero": {
+      "eyebrow": "Contact",
+      "title": "Let us discuss what you are building.",
+      "intro": "I am open to backend development, medical virtual assistance, customer service, SEO, digital marketing, and health technology opportunities."
+    },
+    "kicker": "Best way to reach me",
+    "title": "Send an email",
+    "body": "Share a little about your project, role, or idea. I will respond as soon as I can.",
+    "email": "Chidinmasophia46@gmail.com",
+    "responseNote": "Typically responds within 1-2 business days",
+    "methods": [
+      { "label": "Phone & WhatsApp", "value": "+234 803 766 3779", "href": "tel:+2348037663779", "icon": "phone" },
+      { "label": "GitHub", "value": "github.com/Rn-Asa", "href": "https://github.com/Rn-Asa", "icon": "github" },
+      { "label": "X", "value": "@Dih_nmah", "href": "https://x.com/Dih_nmah", "icon": "at-sign" },
+      { "label": "Instagram", "value": "@r.n_asa", "href": "https://www.instagram.com/r.n_asa", "icon": "instagram" }
+    ]
+  },
+  "projects": [
+    {
+      "slug": "oibsip-data-science",
+      "title": "OIBSIP Data Science",
+      "description": "A collection of practical data science work covering exploratory analysis, prediction, and machine-learning workflows completed through the Oasis Infobyte internship program.",
+      "tech": ["Python", "Jupyter", "Data Science", "Machine Learning"],
+      "githubUrl": "https://github.com/Rn-Asa/OIBSIP",
+      "liveUrl": "",
+      "image": "",
+      "featured": true
+    },
+    {
+      "slug": "library-management-system",
+      "title": "Library Management System",
+      "description": "A Python-based library management project focused on making everyday catalog and record workflows clear, dependable, and easy to maintain.",
+      "tech": ["Python", "Application Design", "Data Management"],
+      "githubUrl": "https://github.com/Rn-Asa/Library_mgt_sys",
+      "liveUrl": "",
+      "image": "",
+      "featured": true
+    },
+    {
+      "slug": "task-management-app",
+      "title": "Task Management App",
+      "description": "A focused web application for capturing tasks and keeping daily priorities visible through a straightforward, approachable interface.",
+      "tech": ["HTML", "CSS", "JavaScript"],
+      "githubUrl": "https://github.com/Rn-Asa/TODO_APP",
+      "liveUrl": "",
+      "image": "",
+      "featured": true
+    }
+  ],
+  "certificates": [
+    {
+      "title": "Enhancement Python Program",
+      "type": "Certificate of Participation",
+      "issuer": "LearnFactory / TechRise",
+      "image": "/certificates/workplace-success-certificate.jpg"
+    },
+    {
+      "title": "Build Careers for Workplace Success",
+      "type": "Certificate of Attendance",
+      "issuer": "Jobberman Nigeria / Mastercard Foundation",
+      "image": "/certificates/python-programming-certificate.jpg"
+    }
+  ],
+  "github": {
+    "username": "Rn-Asa",
+    "profileUrl": "https://github.com/Rn-Asa",
+    "homeLimit": 6,
+    "projectsLimit": 12,
+    "emptyDescription": "A work in progress from Elibe's GitHub.",
+    "fallbackRepos": [
+      { "name": "OIBSIP", "description": "Data science projects, analysis, machine learning models, and internship tasks.", "html_url": "https://github.com/Rn-Asa/OIBSIP", "homepage": null, "language": "Jupyter Notebook", "stargazers_count": 0, "updated_at": "2026-09-08T19:12:01Z" },
+      { "name": "Library_mgt_sys", "description": "A practical library management system.", "html_url": "https://github.com/Rn-Asa/Library_mgt_sys", "homepage": null, "language": "Python", "stargazers_count": 0, "updated_at": "2026-08-17T19:37:56Z" },
+      { "name": "Lib_syst", "description": "Library workflows built with Python.", "html_url": "https://github.com/Rn-Asa/Lib_syst", "homepage": null, "language": "Python", "stargazers_count": 0, "updated_at": "2026-07-21T10:16:11Z" },
+      { "name": "TODO_APP", "description": "A clean application for keeping daily tasks organized.", "html_url": "https://github.com/Rn-Asa/TODO_APP", "homepage": null, "language": "HTML", "stargazers_count": 0, "updated_at": "2026-07-13T11:01:00Z" },
+      { "name": "portfolio", "description": "Personal portfolio experiments and interface work.", "html_url": "https://github.com/Rn-Asa/portfolio", "homepage": null, "language": "HTML", "stargazers_count": 0, "updated_at": "2026-07-13T09:40:15Z" },
+      { "name": "ALPHA", "description": "A Python development project.", "html_url": "https://github.com/Rn-Asa/ALPHA", "homepage": null, "language": "Python", "stargazers_count": 0, "updated_at": "2026-06-28T19:48:36Z" }
+    ]
+  },
+  "notFound": {
+    "pageTitle": "Page not found | Elibe Chidinma Esther",
+    "eyebrow": "404 / Not found",
+    "title": "This page is out of orbit.",
+    "body": "The page you requested does not exist or has moved.",
+    "action": "Back home"
+  }
+}
